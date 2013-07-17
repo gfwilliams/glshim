@@ -15,7 +15,7 @@ install-stamp:
 	dh install
         # copy libs to the right place and link
 	mkdir -p debian/libglshim/usr/lib/${DEB_HOST_MULTIARCH}
-	cp obj-${DEB_HOST_MULTIARCH}/src/*.so* debian/libglshim/usr/lib/${DEB_HOST_MULTIARCH}
+	cp src/*.so* debian/libglshim/usr/lib/${DEB_HOST_MULTIARCH}
 	cd debian/libglshim/usr/lib/${DEB_HOST_MULTIARCH} && ln -s libGL.so.1 libGL.so
 	cd debian/libglshim/usr/lib/${DEB_HOST_MULTIARCH} && ln -s libGL2.so.1 libGL2.so
 	touch install-stamp

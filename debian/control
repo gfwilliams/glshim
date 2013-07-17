@@ -8,13 +8,11 @@ Build-Depends: debhelper (>= 9),
 Homepage: https://github.com/lunixbochs/glshim
 
 
-
-
 Package: libglshim
 Version: 1.00
 Section: base
 Priority: optional
-Architecture: all
+Architecture: armhf
 Depends: 
 Maintainer: gw@collabora.co.uk
 Description: Runtime translation from GL 1.x to GL ES 1.x
