@@ -1,0 +1,13 @@
+diff --git a/src/gl/gl.h b/src/gl/gl.h
+index 3dcb335..258fb68 100644
+--- a/src/gl/gl.h
++++ b/src/gl/gl.h
+@@ -37,7 +37,7 @@ void *gles;
+ #ifdef USE_ES2
+ #define GLES_LIB "libGLESv2.so"
+ #else
+-#define GLES_LIB "libGLES_CM.so"
++#define GLES_LIB "libGLESv1_CM.so"
+ #endif
+ 
+ #define WARN_NULL(name) if (name == NULL) printf("libGL: warning, " #name " is NULL\n");

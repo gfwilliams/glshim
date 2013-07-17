@@ -1,0 +1,23 @@
+Source: libglshim
+Section: games
+Priority: optional
+Maintainer: Gordon Williams <gw@collabora.co.uk>
+Uploaders: Gordon Williams <gw@collabora.co.uk>
+Build-Depends: debhelper (>= 9),
+  cmake
+Homepage: https://github.com/lunixbochs/glshim
+
+
+
+
+Package: libglshim
+Version: 1.00
+Section: base
+Priority: optional
+Architecture: all
+Depends: 
+Maintainer: gw@collabora.co.uk
+Description: Runtime translation from GL 1.x to GL ES 1.x
+# Depends: libgles2-mesa
+# But not really - because it wants Mali instead...
+
