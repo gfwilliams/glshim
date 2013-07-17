@@ -112,7 +112,25 @@ static const GLsizei gl_sizeof(GLenum type) {
             return 1;
     }
     // formats
-    printf("libGL: Unsupported pixel data type: %i\n", type);
+    printf("libGL: Unsupported pixel data type: 0x%x\n", type);
+    return 0;
+}
+
+static const GLuint gl_max_value(GLenum type) {
+    switch (type) {
+        // float/double only make sense on tex/color
+        // be careful about using this
+        case GL_DOUBLE:
+        case GL_FLOAT:
+            return 1;
+        case GL_BYTE:           return 127;
+        case GL_UNSIGNED_BYTE:  return 255;
+        case GL_SHORT:          return 32767;
+        case GL_UNSIGNED_SHORT: return 65535;
+        case GL_INT:            return 2147483647;
+        case GL_UNSIGNED_INT:   return 4294967295;
+    }
+    printf("libGL: unknown gl max value type: 0x%x\n", type);
     return 0;
 }
 
@@ -184,6 +202,7 @@ extern GLstate state;
 GLboolean glIsList(GLuint list);
 GLuint glGenLists(GLsizei range);
 void glActiveTextureARB(GLenum texture);
+void glArrayElement(GLint i);
 void glBegin(GLenum mode);
 void glCallList(GLuint list);
 void glCallLists(GLsizei n, GLenum type, const GLvoid *lists);

@@ -13,9 +13,17 @@ void glEvalCoord1f(GLfloat u);
 void glEvalCoord2d(GLdouble u, GLdouble v);
 void glEvalCoord2f(GLfloat u, GLfloat v);
 
-GLvoid glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
+void glEvalMesh1(GLenum mode, GLint i1, GLint i2);
+void glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
+void glEvalPoint1(GLint i);
+void glEvalPoint2(GLint i, GLint j);
+void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2);
+void glMapGrid1f(GLint un, GLfloat u1, GLfloat u2);
 void glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
 void glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
+void glGetMapdv(GLenum target, GLenum query, GLdouble *v);
+void glGetMapfv(GLenum target, GLenum query, GLfloat *v);
+void glGetMapiv(GLenum target, GLenum query, GLint *v);
 
 typedef struct {
     GLenum type;
@@ -46,5 +54,29 @@ typedef struct {
     GLboolean free;
     const GLfloat *points;
 } MapStateF;
+
+static const GLsizei get_map_width(GLenum target) {
+    switch (target) {
+        case GL_MAP1_COLOR_4:         return 4;
+        case GL_MAP1_INDEX:           return 3;
+        case GL_MAP1_NORMAL:          return 3;
+        case GL_MAP1_TEXTURE_COORD_1: return 1;
+        case GL_MAP1_TEXTURE_COORD_2: return 2;
+        case GL_MAP1_TEXTURE_COORD_3: return 3;
+        case GL_MAP1_TEXTURE_COORD_4: return 4;
+        case GL_MAP1_VERTEX_3:        return 3;
+        case GL_MAP1_VERTEX_4:        return 4;
+        case GL_MAP2_COLOR_4:         return 4;
+        case GL_MAP2_INDEX:           return 3;
+        case GL_MAP2_NORMAL:          return 3;
+        case GL_MAP2_TEXTURE_COORD_1: return 1;
+        case GL_MAP2_TEXTURE_COORD_2: return 2;
+        case GL_MAP2_TEXTURE_COORD_3: return 3;
+        case GL_MAP2_TEXTURE_COORD_4: return 4;
+        case GL_MAP2_VERTEX_3:        return 3;
+        case GL_MAP2_VERTEX_4:        return 4;
+    }
+    return 0;
+}
 
 #endif
